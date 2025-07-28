@@ -16,7 +16,7 @@ RUN mkdir -p /etc/nginx/ssl/ && \
 RUN touch /var/run/nginx.pid && \
     chown -R nginx:nginx /var/run/nginx.pid /run/nginx.pid
 ADD nginx.conf /etc/nginx/nginx.conf
-ADD static /usr/share/nginx/html/
+ADD static /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
 USER nginx
 
