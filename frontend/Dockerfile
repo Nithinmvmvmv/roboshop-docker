@@ -1,6 +1,5 @@
 FROM nginx:1.29.0-alpine
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-RUN rm -rf /usr/share/nginx/html/index.html
 RUN mkdir -p /var/cache/nginx/client_temp && \
         mkdir -p /var/cache/nginx/proxy_temp && \
         mkdir -p /var/cache/nginx/fastcgi_temp && \
@@ -16,10 +15,9 @@ RUN mkdir -p /etc/nginx/ssl/ && \
 RUN touch /var/run/nginx.pid && \
     chown -R nginx:nginx /var/run/nginx.pid /run/nginx.pid
 ADD nginx.conf /etc/nginx/nginx.conf
-ADD static /usr/share/nginx/html
-CMD ["nginx", "-g", "daemon off;"]
+ADD static /usr/share/nginx/html/
 USER nginx
-
+CMD ["nginx", "-g", "daemon off;"]
 
 # FROM nginx
 # RUN rm -rf /usr/share/nginx/html/index.html
