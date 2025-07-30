@@ -40,7 +40,7 @@ services:
       - mysql
   frontend:
     # image: frontend:1.0.0
-    image: nithin6695/frontend
+    image: nithin6695/frontend:v1
     container_name: frontend # -- name frontend
     depends_on:
       - backend
