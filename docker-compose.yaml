@@ -1,5 +1,5 @@
 name: roboshop
-#version: "3.8"
+version: "3.8"
 networks:
   default:
     name: roboshop
@@ -8,12 +8,12 @@ volumes:
 services:
   mysql:
     # image: mysql:1.0.0
-    image: nithin6695/mysql
+    image: nithin6695/mysql:1.0.0
     container_name: mysql # -- name mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=ExpenseApp@1
+      - MYSQL_ROOT_PASSWORD=RoboShop@1
       - MYSQL_USER=expense
-      - MYSQL_PASSWORD=ExpenseApp@1
+      - MYSQL_PASSWORD=RoboShop@1
       - MYSQL_DATABASE=transactions
     volumes:
       - source: mysql # - mysql1:/var/lib/mysql 
@@ -33,20 +33,19 @@ services:
       
   backend:
     # image: backend:1.0.0
-    image: nithin6695/backend
+    image: nithin6695/backend:1.0.0
     container_name: backend # -- name backend
     command: sh -c "sleep 20  && node /opt/server/index.js"
     depends_on:
       - mysql
   frontend:
     # image: frontend:1.0.0
-    image: nithin6695/frontend
+    image: nithin6695/frontend:1.0.0
     container_name: frontend # -- name frontend
     depends_on:
       - backend
     ports:
       - "80:80"
-
 
 # networks:
 #   default:
