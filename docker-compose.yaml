@@ -8,7 +8,7 @@ volumes:
 services:
   mysql:
     # image: mysql:1.0.0
-    image: nithin6695/mysql:1.0.0
+    image: nithin6695/mysql
     container_name: mysql # -- name mysql
     environment:
       - MYSQL_ROOT_PASSWORD=ExpenseApp@1
@@ -33,14 +33,14 @@ services:
       
   backend:
     # image: backend:1.0.0
-    image: nithin6695/backend:1.0.0
+    image: nithin6695/backend
     container_name: backend # -- name backend
     command: sh -c "sleep 20  && node /opt/server/index.js"
     depends_on:
       - mysql
   frontend:
     # image: frontend:1.0.0
-    image: nithin6695/frontend:1.0.0
+    image: nithin6695/frontend
     container_name: frontend # -- name frontend
     depends_on:
       - backend
